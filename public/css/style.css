@@ -1,0 +1,34 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .book-position {
+    width: 80%;
+    text-align: center;
+  }
+  a {
+    font-family: sans-serif;
+  }
+   
+  .category > nav.navbar> ul >li.nav-hover>a:hover{
+      background-color:grey;
+      color: white !important;
+    }
+   
+
+  #mainScreen > div >div:hover{
+    border:1px solid  #36a8b6;
+    background-color:  #c3e7eb;
+    
+  }
+  .define-size{
+    font-size:1.3em;
+   }
+
+  .itemcolor{
+     background-color:#ceddff;}
+ 
