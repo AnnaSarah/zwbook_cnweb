@@ -108,8 +108,9 @@ if (isset($_SESSION['username'])) {
                         die("Connection failed: " . $conn->connect_error);
                         exit();
                     }
-                    $sql ="INSERT INTO `category` VALUES ('$type','$name')";
+                   $sql ="INSERT INTO `category` VALUES ('$type','$name')";
                     if ($conn->query($sql) === TRUE) {
+                        echo " HAHHAHA";
                         echo "<i class='fa fa-check-circle text-success' aria-hidden='true'></i> Thêm thành công!";
                     } else {
                         echo "Error: " . $sql . "<br>" . $conn->error;

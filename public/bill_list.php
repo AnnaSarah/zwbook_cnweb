@@ -52,7 +52,7 @@ include "book_ver2.php";
                     <a class='nav-link text-white ' data-toggle='dropdown' href='#'>Chào {$_SESSION['username']} </a>
                     ​<ul class='dropdown-menu dropdown-menu-right'>
                         <li role='presentation'><a class='dropdown-item' href='index.php'>Trang Chủ</a></li>
-                        <li role='presentation'><a class='dropdown-item' href='quantri.php'>Quản trị</a></li>
+                        <li role='presentation'><a class='dropdown-item' href='indexquantri.php'>Quản trị</a></li>
                         <li role='presentation'><a class='dropdown-item' href='logout.php'>Đăng xuất</a></li>
                     </ul>
                     </li>
@@ -75,43 +75,57 @@ include "book_ver2.php";
             }
             ?>
         </nav>
-        <div class="container">
-            <div class="row mt-4">
-                <div class="col-6 text-center" style="border: 3px solid #5c7ee9;">
-                    <h3> Quản lý danh mục </h3>
-                    <div>
-                        <p class="mt-5 text-dark">
-                            <a href="quantri_category.php" class="text-dark"><i class="fa-solid fa-box display-1"></i></a>
+        <div class="container mt-5">
 
-                        </p>
-                    </div>
-                </div>
-                <div class="col-6 text-center " style="border: 3px solid #5c7ee9;">
-
-                    <h3> Quản lý sách </h3>
-                    <div>
-                        <p class="mt-5 text-dark">
-                            <a href="quantri.php" class="text-dark"> <i class="fa-solid fa-book display-1"></i></a>
-                        </p>
-                    </div>
-
-                </div>
-                <div class="col-6 text-center mt-2" style="border: 3px solid #5c7ee9;">
-               
-                      <h3> Xem hóa đơn </h3>
-                      <div>
-                        <p class="mt-5 text-dark"> 
-                        <a href="bill_list.php" class="text-dark"> <i class="fa-solid fa-book display-1"></i></a>
-                        </p>
-                </div>
-            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Mã hóa đơn</th>
+                        <th scope="col">Người đặt hàng</th>
+                        <th scope="col">SĐT</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Giá Tiền</th>
+                        <th scope="col">Ngày đặt hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $conn1 = Database::connect();
+                    if ($conn1->connect_errno) {
+                        die("Connection failed: " . $conn1->connect_error);
+                        exit();
+                    }
+                    $sql1 = "SELECT * FROM bill ;";
+                    if ($result1 = $conn1->query($sql1)) {
+                        if ($result1->num_rows > 0) {
+                            // output data of each row
+                            $count = 1;
+                            while ($row1 = $result1->fetch_assoc()) {
+                                echo '<tr>';
+                                echo '<td scope="col">' . $count . '</td>
+                                    <td scope="col">' . $row1['id_bill'] . '</td>
+                                    <td scope="col">' . $row1['ten_kh'] . '</td>
+                                    <td scope="col">' . $row1['sdt'] . '</td>
+                                    <td scope="col">' . $row1['diachi'] . '</td>
+                                    <td scope="col">' . number_format($row1['giatien']) . 'đ</td>
+                                    <td scope="col">' . $row1['ngay'] . '</td>';
+                                echo '</tr>';
+                                $count = $count + 1;
+                            }
+                        } else {
+                            echo "<h4>Không có đơn hàng nào !</h4>";
+                        }
+                    }
+                    $conn1->close();
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div style="margin-top: 24%;">
-        <?php
-        include "footer.php";
-        ?>
-    </div>
+    <?php
+    include "footer.php";
+    ?>
 </body>
 
 </html>

@@ -15,12 +15,12 @@
   }
    
   .category > nav.navbar> ul >li.nav-hover>a:hover{
-      background-color:grey;
+      background-color:rgb(130, 119, 119);
       color: white !important;
     }
    
 
-  #mainScreen > div >div:hover{
+  .content-row >div:hover{
     border:1px solid  #36a8b6;
     background-color:  #c3e7eb;
     

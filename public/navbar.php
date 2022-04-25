@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-primary row">
+<nav class="navbar navbar-expand-sm bg-primary row " style="height:12%">
 
 <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4">
   <a href="index.php">
@@ -36,10 +36,11 @@
         <a class='nav-link text-white ' data-toggle='dropdown' href='#'>Chào {$_SESSION['username']} </a>
         ​<ul class='dropdown-menu dropdown-menu-right'>
         ";
+        echo "<li role='presentation'><a class='dropdown-item' href='index.php'>Trang chủ</a></li>";
     if ($_SESSION['username'] == "root") {
         echo "<li role='presentation'><a class='dropdown-item' href='indexquantri.php'>Quản trị</a></li>";
     } else {
-        echo "<li role='presentation'><a class='dropdown-item' href='userPage.php'>Trang cá nhân</a></li>";
+        echo "<li role='presentation'><a class='dropdown-item' href='userPage.php'>Giỏ hàng</a></li>";
     }
     echo "
         <li role='presentation'><a class='dropdown-item' href='logout.php'>Đăng xuất</a></li>

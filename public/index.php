@@ -34,7 +34,7 @@ $books =  book::selectAll();
       <!--body-->
       <div class="category col-lg-2 col-sm-3">
         <!--category-->
-        <nav class="navbar bg-light d-block">
+        <nav class="navbar d-block" style="background-color:#adcae9">
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link text-dark"><i class="fa-solid fa-bars"></i> Danh mục</a>
@@ -56,7 +56,10 @@ $books =  book::selectAll();
       </div>
       
       <div class="content col-lg-10 col-sm-9" id="mainScreen">
-        <div class="row" >
+          <div class="row mt-3">
+      <?php  include "slider.php" ?>
+          </div>
+        <div class="row content-row " >
           <?php foreach ($books as $book) : ?>
             <div class="col-sm-3 col-lg-3  mb-3 mt-3 pt-4">
               <a href="product.php?idSP=<?php echo $book->id ?>">
@@ -65,8 +68,6 @@ $books =  book::selectAll();
               <h3> <a class="text-dark"  href="product.php?idSP=<?php echo $book->id ?>"><?php echo $book->name ?></h3>
               <h6  class="text-danger"><?php echo "Giá : " .  number_format($book->cost) . "VND" ?></h6>
             </div>
-                     
-    
           <?php endforeach ?>
         </div>
       </div>
